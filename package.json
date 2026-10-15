@@ -48,7 +48,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').chmodSync('dist/cli.js', 0o755)\"",
     "typecheck": "tsc -p tsconfig.test.json && tsc -p demo/tsconfig.json",
     "test": "vitest run",
     "format": "prettier --write .",
@@ -62,7 +62,8 @@
     "predemo": "node scripts/parser-fingerprint.mjs",
     "predemo:build": "node scripts/parser-fingerprint.mjs",
     "pretypecheck": "node scripts/parser-fingerprint.mjs",
-    "check": "npm run format:check && npm run typecheck"
+    "check": "npm run format:check && npm run typecheck",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "smol-toml": "^1.4.2",
