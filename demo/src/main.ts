@@ -1,3 +1,4 @@
+import { carryOverAnnotations } from "../../src/analysis/carry-over.js";
 import { supportedLanguages } from "../../src/parse.js";
 import { indexedDbPersistence } from "../../src/persist/projects.js";
 import { QueryEngine } from "../../src/query/api.js";
@@ -129,9 +130,18 @@ worker.onmessage = async (e: MessageEvent<WorkerResponse>) => {
   else if (msg.type === "error") showStatus(msg.message, "error");
   else if (msg.type === "done") {
     const graph = graphFromData(msg.graph);
+    // Keep annotations from the previous analysis of this project.
+    const previous = await projects.load(pendingProject);
+    const kept = previous === undefined ? null : carryOverAnnotations(previous, graph);
     await projects.save(pendingProject, graph, pendingProject);
+    const orphaned = kept === null ? 0 : [...kept.orphaned.values()].reduce((n, list) => n + list.length, 0);
+    const notes =
+      kept === null || kept.carried + orphaned === 0
+        ? ""
+        : ` · kept ${kept.carried} annotation(s)` +
+          (orphaned > 0 ? `, ${orphaned} on nodes that no longer exist (kept in case they return)` : "");
     showStatus(
-      `Parsed ${msg.files} files in ${(msg.elapsedMs / 1000).toFixed(1)}s (${msg.cached} from cache) · ${graph.nodes.size} nodes, ${graph.edges.length} edges`,
+      `Parsed ${msg.files} files in ${(msg.elapsedMs / 1000).toFixed(1)}s (${msg.cached} from cache) · ${graph.nodes.size} nodes, ${graph.edges.length} edges${notes}`,
       "done",
     );
     loadEngine(pendingProject, QueryEngine.fromGraph(graph));

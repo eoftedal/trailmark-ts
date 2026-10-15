@@ -110,3 +110,39 @@ describe("KeyValueParseCache.pruneStale", () => {
     expect((await kv.keys()).length).toBe(2);
   });
 });
+
+describe("carryOverAnnotations", () => {
+  const ann = (description: string, source = "manual") => ({ kind: "assumption" as const, description, source });
+
+  it("keeps annotations across a re-analysis, skips derived ones, and reports orphans", async () => {
+    const { carryOverAnnotations } = await import("../src/analysis/carry-over.js");
+    const source = new MemoryFileSource("proj", PROJECT);
+    const before = await parseDirectory(source, "python");
+    before.addAnnotation("app.auth:Auth.verify", ann("token is a JWT"));
+    before.addAnnotation("app.auth:Auth.verify", ann("blast radius 3", "preanalysis"));
+    before.addAnnotation("app.main:main", ann("entry from CLI", "llm"));
+
+    // The project changes: main() is renamed, verify() still exists.
+    source.set("app/main.py", PROJECT["app/main.py"].replace("def main", "def run"));
+    const after = await parseDirectory(source, "python");
+    const result = carryOverAnnotations(before, after);
+
+    expect(result.carried).toBe(1);
+    expect(after.annotations.get("app.auth:Auth.verify")).toEqual([ann("token is a JWT")]);
+    expect([...result.orphaned]).toEqual([["app.main:main", [ann("entry from CLI", "llm")]]]);
+    // Orphans stay in the graph so they reattach if the node comes back.
+    expect(after.annotations.get("app.main:main")).toEqual([ann("entry from CLI", "llm")]);
+    expect(QueryEngine.fromGraph(after).annotationsOf("app.auth:Auth.verify")).toHaveLength(1);
+  });
+
+  it("does not duplicate annotations already present in the new graph", async () => {
+    const { carryOverAnnotations } = await import("../src/analysis/carry-over.js");
+    const source = new MemoryFileSource("proj", PROJECT);
+    const before = await parseDirectory(source, "python");
+    const after = await parseDirectory(source, "python");
+    before.addAnnotation("app.main:main", ann("same note"));
+    after.addAnnotation("app.main:main", ann("same note"));
+    expect(carryOverAnnotations(before, after).carried).toBe(0);
+    expect(after.annotations.get("app.main:main")).toHaveLength(1);
+  });
+});

@@ -34,6 +34,7 @@ export {
 } from "./persist/projects.js";
 export { applyRepositoryLinks, applyRepositoryLinksText } from "./analysis/links.js";
 export { ensureProxyNodes } from "./analysis/proxies.js";
+export { carryOverAnnotations, DERIVED_ANNOTATION_SOURCES, type CarryOverResult } from "./analysis/carry-over.js";
 export { detectEntrypoints } from "./analysis/entrypoints.js";
 export { runPreanalysis } from "./analysis/preanalysis.js";
 export { computeDiff, formatDiff } from "./analysis/diff.js";

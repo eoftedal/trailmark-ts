@@ -22,6 +22,9 @@ First release: a TypeScript port of [Trail of Bits' Trailmark](https://github.co
 - Persistence: analyzed graphs (with annotations) and a content-hashed per-file parse cache in IndexedDB, in memory, or
   on disk in Node. The cache key includes a fingerprint of the parsers and grammars, so it invalidates itself when
   parser output changes.
+- `carryOverAnnotations()` keeps annotations (notes, assumptions, findings) when a project is re-analyzed. Annotations
+  on nodes that no longer exist are kept so they reattach if the node returns; recomputed pre-analysis annotations are
+  skipped. The demo uses it when re-analyzing a saved project.
 - A browser demo app: overview, node explorer with annotations, and Mermaid diagrams, with parsing in a Web Worker.
 
 ### Improvements over upstream
