@@ -1,0 +1,35 @@
+name: Publish Package to npmjs
+on:
+  release:
+    types: [published]
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install -g npm
+      - run: npm ci
+      - name: Lint
+        run: npm run check
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
+      - name: Check version
+        run: |
+          node -e "import('./dist/version.js').then((m) => { if (m.version !== process.argv[1]) throw new Error('Wrong version in src/version.ts: ' + m.version) })" "$(jq -r .version package.json)"
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

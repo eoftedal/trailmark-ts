@@ -1,0 +1,6 @@
+grammars/*.wasm
+.grammar-build
+node_modules
+dist
+demo/dist
+test/fixtures

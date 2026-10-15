@@ -1,0 +1,257 @@
+{
+  "result": {
+    "artifact": "my_firmware.v2",
+    "binary_nodes": 7,
+    "call_edges": 3,
+    "external_proxies": 2,
+    "correspondences": 1,
+    "subgraphs_created": ["binary:my_firmware.v2"]
+  },
+  "graph": {
+    "language": "",
+    "root_path": ".",
+    "summary": {
+      "total_nodes": 10,
+      "functions": 8,
+      "classes": 0,
+      "proxies": 2,
+      "call_edges": 3,
+      "dependencies": [],
+      "entrypoints": 0
+    },
+    "nodes": {
+      "src.main:main": {
+        "id": "src.main:main",
+        "name": "main",
+        "kind": "function",
+        "location": { "file_path": "src/main.c", "start_line": 1, "end_line": 20, "start_col": null, "end_col": null },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null
+      },
+      "bin.my_firmware.v2:sub_b53769e0": {
+        "id": "bin.my_firmware.v2:sub_b53769e0",
+        "name": "dup",
+        "kind": "function",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "binary",
+        "attributes": { "size": 4, "architecture": "arm", "artifact_hash": "ff" }
+      },
+      "bin.my_firmware.v2:sub_bd26c87f": {
+        "id": "bin.my_firmware.v2:sub_bd26c87f",
+        "name": "dup",
+        "kind": "function",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "binary",
+        "attributes": { "architecture": "arm", "artifact_hash": "ff" }
+      },
+      "bin.my_firmware.v2:weird_name_": {
+        "id": "bin.my_firmware.v2:weird_name_",
+        "name": "weird name!!",
+        "kind": "function",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "binary",
+        "attributes": { "address": " 0X_1f ", "architecture": "arm", "artifact_hash": "ff" }
+      },
+      "bin.my_firmware.v2:neg": {
+        "id": "bin.my_firmware.v2:neg",
+        "name": "neg",
+        "kind": "function",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "binary",
+        "attributes": { "rva": "-0x10", "architecture": "arm", "artifact_hash": "ff" }
+      },
+      "bin.my_firmware.v2:big": {
+        "id": "bin.my_firmware.v2:big",
+        "name": "big",
+        "kind": "function",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "binary",
+        "attributes": { "address": "0xffffffff80001000", "architecture": "arm", "artifact_hash": "ff" }
+      },
+      "bin.my_firmware.v2:sub_255f05a9": {
+        "id": "bin.my_firmware.v2:sub_255f05a9",
+        "name": "sub_255f05a9",
+        "kind": "function",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "binary",
+        "attributes": { "rva": "010", "architecture": "arm", "artifact_hash": "ff" }
+      },
+      "bin.my_firmware.v2:main": {
+        "id": "bin.my_firmware.v2:main",
+        "name": "main",
+        "kind": "function",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "binary",
+        "attributes": { "architecture": "arm", "artifact_hash": "ff" }
+      },
+      "proxy.external:_name_nope_address_4096_": {
+        "id": "proxy.external:_name_nope_address_4096_",
+        "name": "{'name': 'nope', 'address': 4096}",
+        "kind": "proxy",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "proxy",
+        "attributes": { "raw_symbol": "{'name': 'nope', 'address': 4096}", "proxy_kind": "external" }
+      },
+      "proxy.external:printf@plt": {
+        "id": "proxy.external:printf@plt",
+        "name": "printf@plt",
+        "kind": "proxy",
+        "location": {
+          "file_path": "/data/my firmware.v2.json",
+          "start_line": 0,
+          "end_line": 0,
+          "start_col": null,
+          "end_col": null
+        },
+        "parameters": [],
+        "return_type": null,
+        "exception_types": [],
+        "cyclomatic_complexity": null,
+        "branches": [],
+        "docstring": null,
+        "origin": "proxy",
+        "attributes": { "raw_symbol": "printf@plt", "proxy_kind": "external" }
+      }
+    },
+    "edges": [
+      {
+        "source": "bin.my_firmware.v2:weird_name_",
+        "target": "proxy.external:_name_nope_address_4096_",
+        "kind": "calls",
+        "confidence": "certain",
+        "attributes": { "callsite": "0x5", "kind": "direct" }
+      },
+      {
+        "source": "bin.my_firmware.v2:sub_255f05a9",
+        "target": "bin.my_firmware.v2:weird_name_",
+        "kind": "calls",
+        "confidence": "uncertain"
+      },
+      {
+        "source": "bin.my_firmware.v2:main",
+        "target": "proxy.external:printf@plt",
+        "kind": "calls",
+        "confidence": "certain",
+        "attributes": { "address": 1 }
+      },
+      {
+        "source": "src.main:main",
+        "target": "bin.my_firmware.v2:main",
+        "kind": "corresponds_to",
+        "confidence": "inferred",
+        "attributes": { "artifact": "my_firmware.v2" }
+      }
+    ],
+    "subgraphs": {
+      "binary:my_firmware.v2": [
+        "bin.my_firmware.v2:big",
+        "bin.my_firmware.v2:main",
+        "bin.my_firmware.v2:neg",
+        "bin.my_firmware.v2:sub_255f05a9",
+        "bin.my_firmware.v2:sub_b53769e0",
+        "bin.my_firmware.v2:sub_bd26c87f",
+        "bin.my_firmware.v2:weird_name_"
+      ]
+    }
+  }
+}

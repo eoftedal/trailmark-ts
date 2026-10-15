@@ -1,0 +1,82 @@
+{
+  "name": "trailmark-ts",
+  "version": "0.5.0",
+  "description": "TypeScript/browser port of Trail of Bits Trailmark: parse source code into queryable graphs for security analysis",
+  "keywords": [
+    "security",
+    "static-analysis",
+    "call-graph",
+    "code-graph",
+    "tree-sitter",
+    "wasm",
+    "audit",
+    "attack-surface"
+  ],
+  "homepage": "https://github.com/eoftedal/trailmark-ts#readme",
+  "bugs": {
+    "url": "https://github.com/eoftedal/trailmark-ts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eoftedal/trailmark-ts.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Erlend Oftedal",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "default": "./dist/node.js"
+    },
+    "./grammars/*": "./grammars/*"
+  },
+  "bin": {
+    "trailmark": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "grammars/*.wasm",
+    "grammars/manifest.json",
+    "CHANGELOG.md",
+    "NOTICE.upstream"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.test.json && tsc -p demo/tsconfig.json",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build:grammars": "node scripts/build-grammars.mjs",
+    "demo": "vite --config demo/vite.config.ts",
+    "demo:build": "vite build --config demo/vite.config.ts",
+    "fingerprint": "node scripts/parser-fingerprint.mjs",
+    "prebuild": "node scripts/parser-fingerprint.mjs",
+    "pretest": "node scripts/parser-fingerprint.mjs",
+    "predemo": "node scripts/parser-fingerprint.mjs",
+    "predemo:build": "node scripts/parser-fingerprint.mjs",
+    "pretypecheck": "node scripts/parser-fingerprint.mjs",
+    "check": "npm run format:check && npm run typecheck"
+  },
+  "dependencies": {
+    "smol-toml": "^1.4.2",
+    "web-tree-sitter": "^0.26.13"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "fake-indexeddb": "^6.0.1",
+    "mermaid": "^11.17.2",
+    "prettier": "^3.6.2",
+    "tree-sitter-cli": "^0.26.13",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.7",
+    "vitest": "^3.2.4"
+  }
+}

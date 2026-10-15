@@ -1,0 +1,29 @@
+flowchart TD
+    taxonomy["taxonomy, module"]
+    taxonomy_add["add, function, CC=1"]
+    taxonomy_branchy["branchy, function, CC=7"]
+    taxonomy_fetch_async["fetch_async, function, CC=1"]
+    taxonomy_counter["counter, function, CC=2"]
+    taxonomy_Animal["Animal, class"]
+    taxonomy_Animal___init__["__init__, method, CC=1"]
+    taxonomy_Animal_describe["describe, method, CC=1"]
+    taxonomy_Dog["Dog, class"]
+    taxonomy_Dog___init__["__init__, method, CC=1"]
+    taxonomy_Dog_bark["bark, method, CC=2"]
+    taxonomy_use_animal["use_animal, function, CC=1"]
+    proxy_unresolved_taxonomy_range["taxonomy:range, proxy"]
+    proxy_unresolved_taxonomy_int["taxonomy:int, proxy"]
+    proxy_unresolved_taxonomy_RuntimeError["taxonomy:RuntimeError, proxy"]
+    proxy_unresolved_super____init__["super().__init__, proxy"]
+    proxy_unresolved_taxonomy_super["taxonomy:super, proxy"]
+    proxy_unresolved_taxonomy_ValueError["taxonomy:ValueError, proxy"]
+    proxy_unresolved_d_bark["d.bark, proxy"]
+    proxy_unresolved_json_dumps["json.dumps, proxy"]
+    taxonomy_branchy --> proxy_unresolved_taxonomy_range
+    taxonomy_branchy --> proxy_unresolved_taxonomy_int
+    taxonomy_branchy --> proxy_unresolved_taxonomy_RuntimeError
+    taxonomy_Dog___init__ -.-> proxy_unresolved_super____init__
+    taxonomy_Dog___init__ --> proxy_unresolved_taxonomy_super
+    taxonomy_Dog_bark --> proxy_unresolved_taxonomy_ValueError
+    taxonomy_use_animal -.-> proxy_unresolved_d_bark
+    taxonomy_use_animal -.-> proxy_unresolved_json_dumps

@@ -1,0 +1,115 @@
+{
+  "_comment": "Pinned to tree-sitter-language-pack v1.12.5 (sources/language_definitions.json) so ASTs match upstream trailmark.",
+  "grammars": {
+    "python": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-python",
+      "rev": "26855eabccb19c6abf499fbc5b8dc7cc9ab8bc64"
+    },
+    "javascript": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-javascript",
+      "rev": "58404d8cf191d69f2674a8fd507bd5776f46cb11"
+    },
+    "typescript": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-typescript",
+      "rev": "75b3874edb2dc714fb1fd77a32013d0f8699989f",
+      "directory": "typescript"
+    },
+    "go": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-go",
+      "rev": "2346a3ab1bb3857b48b29d779a1ef9799a248cd7"
+    },
+    "rust": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-rust",
+      "rev": "77a3747266f4d621d0757825e6b11edcbf991ca5"
+    },
+    "solidity": {
+      "repo": "https://github.com/JoranHonig/tree-sitter-solidity",
+      "rev": "048fe686cb1fde267243739b8bdbec8fc3a55272"
+    },
+    "java": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-java",
+      "rev": "e10607b45ff745f5f876bfa3e94fbcc6b44bdc11"
+    },
+    "c": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-c",
+      "rev": "b780e47fc780ddc8da13afa35a3f4ed5c157823d"
+    },
+    "cpp": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-cpp",
+      "rev": "8b5b49eb196bec7040441bee33b2c9a4838d6967"
+    },
+    "php": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-php",
+      "rev": "38216983c07bf9e1b56e16acde53b25adaeab61c",
+      "directory": "php"
+    },
+    "ruby": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-ruby",
+      "rev": "ad907a69da0c8a4f7a943a7fe012712208da6dee"
+    },
+    "csharp": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-c-sharp",
+      "rev": "af29416d729b7a6603101b513604392d8f675e3b"
+    },
+    "kotlin": {
+      "repo": "https://github.com/fwcd/tree-sitter-kotlin",
+      "rev": "c8ac3d2627240160b999a2c100de3babbdb8f419"
+    },
+    "swift": {
+      "repo": "https://github.com/alex-pinkus/tree-sitter-swift",
+      "rev": "0c469cbb77457ebabe2702268bcf7f116b3fac8f"
+    },
+    "dart": {
+      "repo": "https://github.com/UserNobody14/tree-sitter-dart",
+      "rev": "a9bdfa3db2fbc9b9f12c93450d04a671f33a5102"
+    },
+    "haskell": {
+      "repo": "https://github.com/tree-sitter/tree-sitter-haskell",
+      "rev": "0975ef72fc3c47b530309ca93937d7d143523628"
+    },
+    "erlang": {
+      "repo": "https://github.com/WhatsApp/tree-sitter-erlang",
+      "rev": "836aa2b6c3af2c7cef3f84049b0ed6d44485a870"
+    },
+    "cairo": {
+      "repo": "https://github.com/tree-sitter-grammars/tree-sitter-cairo",
+      "rev": "6238f609bea233040fe927858156dee5515a0745"
+    },
+    "move": {
+      "repo": "https://github.com/tree-sitter-grammars/tree-sitter-move",
+      "rev": "b8ca25518749be10562455fd081a3dab30b93b8b"
+    },
+    "tact": {
+      "repo": "https://github.com/tact-lang/tree-sitter-tact",
+      "rev": "a6267c2091ed432c248780cec9f8d42c8766d9ad"
+    },
+    "func": {
+      "repo": "https://github.com/tree-sitter-grammars/tree-sitter-func",
+      "rev": "f780ca55e65e7d7360d0229331763e16c452fc98"
+    },
+    "sway": {
+      "repo": "https://github.com/FuelLabs/tree-sitter-sway",
+      "rev": "9b7845ce06ecb38b040c3940970b4fd0adc331d1"
+    },
+    "rego": {
+      "repo": "https://github.com/FallenAngel97/tree-sitter-rego",
+      "rev": "2ed149b424b24a301e9750f1d78263212f037ac5"
+    },
+    "proto": {
+      "repo": "https://github.com/coder3101/tree-sitter-proto",
+      "rev": "cf8e4eba6e5b4afb9eb16c9178bba3d2504b46c2"
+    },
+    "thrift": {
+      "repo": "https://github.com/tree-sitter-grammars/tree-sitter-thrift",
+      "rev": "68fd0d80943a828d9e6f49c58a74be1e9ca142cf"
+    },
+    "graphql": {
+      "repo": "https://github.com/bkegley/tree-sitter-graphql",
+      "rev": "5e66e961eee421786bdda8495ed1db045e06b5fe"
+    },
+    "objc": {
+      "repo": "https://github.com/tree-sitter-grammars/tree-sitter-objc",
+      "rev": "181a81b8f23a2d593e7ab4259981f50122909fda"
+    }
+  }
+}

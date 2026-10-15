@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trailmark Explorer</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <header class="bar">
+      <div class="brand"><span class="mark">◆</span> Trailmark <small>browser</small></div>
+      <div class="controls">
+        <select id="language" title="Language"></select>
+        <button id="open" class="primary">Open folder…</button>
+        <input id="picker" type="file" webkitdirectory multiple hidden />
+        <select id="projects" title="Saved projects">
+          <option value="">Saved projects…</option>
+        </select>
+        <button id="delete-project" title="Delete saved project" disabled>Delete</button>
+        <button id="sample">Try a sample</button>
+        <button id="clear-cache" title="Clear the per-file parse cache">Clear cache</button>
+      </div>
+    </header>
+    <div id="status" class="status" hidden>
+      <div class="progress"><span></span></div>
+      <p></p>
+    </div>
+
+    <main id="empty" class="empty">
+      <h1>Explore a codebase as a call graph</h1>
+      <p>
+        Pick a folder. Everything runs locally in your browser: tree-sitter (WASM) parses the code, the graph and a
+        per-file parse cache are stored in IndexedDB, and nothing is uploaded.
+      </p>
+    </main>
+
+    <main id="app" hidden>
+      <nav class="tabs">
+        <button data-tab="overview" class="active">Overview</button>
+        <button data-tab="explore">Explore</button>
+        <button data-tab="diagram">Diagram</button>
+      </nav>
+
+      <section id="tab-overview" class="tab">
+        <div id="summary" class="cards"></div>
+        <div class="grid2">
+          <div class="panel">
+            <h2>Attack surface</h2>
+            <div id="surface"></div>
+          </div>
+          <div class="panel">
+            <h2>Complexity hotspots</h2>
+            <div id="hotspots"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-explore" class="tab" hidden>
+        <div class="explore">
+          <div class="panel list-panel">
+            <input id="search" type="search" placeholder="Search functions, classes, ids…" />
+            <ul id="results" class="results"></ul>
+          </div>
+          <div id="detail" class="panel detail"><p class="muted">Select a node.</p></div>
+        </div>
+      </section>
+
+      <section id="tab-diagram" class="tab" hidden>
+        <div class="panel diagram-controls">
+          <select id="diagram-type"></select>
+          <input id="diagram-focus" placeholder="Focus node (optional)" />
+          <label>Depth <input id="diagram-depth" type="number" min="1" max="6" value="2" /></label>
+          <select id="diagram-direction">
+            <option>TB</option>
+            <option>LR</option>
+          </select>
+          <button id="render" class="primary">Render</button>
+        </div>
+        <div class="panel">
+          <div id="diagram" class="diagram"></div>
+          <details>
+            <summary>Mermaid source</summary>
+            <pre id="diagram-src"></pre>
+          </details>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

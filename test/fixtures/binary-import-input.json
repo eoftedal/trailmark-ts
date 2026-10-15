@@ -1,0 +1,19 @@
+{
+  "artifact": { "arch": "arm", "sha256": "ff" },
+  "functions": [
+    { "name": "dup", "size": 4 },
+    { "name": "dup", "note": "\u00e9 \u00fc" },
+    { "symbol": "weird name!!", "address": " 0X_1f " },
+    { "name": "neg", "rva": "-0x10" },
+    { "name": "big", "address": "0xffffffff80001000" },
+    { "id": "f9", "rva": "010" },
+    { "name": "main", "source": { "node_id": "src.main:main" } }
+  ],
+  "calls": [
+    { "source": "0x1f", "target": { "name": "nope", "address": 4096 }, "kind": "direct", "callsite": "0x5" },
+    { "source": "f9", "target": "weird name!!", "confidence": "bogus" },
+    { "source": { "id": "main" }, "target": "printf@plt", "address": 1 },
+    { "source": "missing", "target": "x" },
+    { "source": "big", "target": null }
+  ]
+}

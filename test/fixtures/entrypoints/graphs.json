@@ -1,0 +1,2688 @@
+{
+  "c_dllexport": {
+    "edges": [["lib", "lib:compute", "contains"]],
+    "files": {
+      "lib.c": "__declspec(dllexport)\nint compute(int x) {\n    return x * 2;\n}\n"
+    },
+    "language": "c",
+    "nodes": [
+      ["lib", "lib", "module", "lib.c", 1, 5, [], []],
+      ["lib:compute", "compute", "function", "lib.c", 1, 4, [], ["int"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "C/C++ exported symbol (extern \"C\" / visibility / dllexport)",
+        "kind": "api",
+        "node_id": "lib:compute",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "c_plain": {
+    "edges": [["util", "util:helper", "contains"]],
+    "files": {
+      "util.c": "int helper(int x) {\n    return x + 1;\n}\n"
+    },
+    "language": "c",
+    "nodes": [
+      ["util", "util", "module", "util.c", 1, 4, [], []],
+      ["util:helper", "helper", "function", "util.c", 1, 3, [], ["int"]]
+    ],
+    "surface": []
+  },
+  "cpp_extern_c": {
+    "edges": [["api", "api:add_one", "contains"]],
+    "files": {
+      "api.cpp": "extern \"C\" int add_one(int x) {\n    return x + 1;\n}\n"
+    },
+    "language": "cpp",
+    "nodes": [
+      ["api", "api", "module", "api.cpp", 1, 4, [], []],
+      ["api:add_one", "add_one", "function", "api.cpp", 1, 3, [], ["int"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "C/C++ exported symbol (extern \"C\" / visibility / dllexport)",
+        "kind": "api",
+        "node_id": "api:add_one",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "cs_aspnet": {
+    "edges": [
+      ["UsersController", "UsersController:UsersController", "contains"],
+      ["UsersController:UsersController", "UsersController:ControllerBase", "inherits"],
+      ["UsersController:UsersController", "UsersController:UsersController.Get", "contains"]
+    ],
+    "files": {
+      "UsersController.cs": "using Microsoft.AspNetCore.Mvc;\n\n[ApiController]\n[Route(\"api/[controller]\")]\npublic class UsersController : ControllerBase {\n    [HttpGet(\"{id}\")]\n    public IActionResult Get(int id) {\n        return Ok();\n    }\n}\n"
+    },
+    "language": "c_sharp",
+    "nodes": [
+      ["UsersController", "UsersController", "module", "UsersController.cs", 1, 11, [], []],
+      ["UsersController:UsersController", "UsersController", "class", "UsersController.cs", 3, 10, [], []],
+      ["UsersController:UsersController.Get", "Get", "method", "UsersController.cs", 6, 9, [], ["int"]],
+      [
+        "proxy.unresolved:UsersController:UsersController.Ok",
+        "UsersController:UsersController.Ok",
+        "proxy",
+        "UsersController.cs",
+        8,
+        8,
+        [
+          ["raw_symbol", "UsersController:UsersController.Ok"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "ASP.NET Core HTTP handler",
+        "kind": "api",
+        "node_id": "UsersController:UsersController.Get",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "dart_main": {
+    "edges": [["app", "app:main", "contains"]],
+    "files": {
+      "app.dart": "void main() { print('hi'); }\n"
+    },
+    "language": "dart",
+    "nodes": [
+      ["app", "app", "module", "app.dart", 1, 2, [], []],
+      ["app:main", "main", "function", "app.dart", 1, 1, [], []],
+      [
+        "proxy.unresolved:print",
+        "print",
+        "proxy",
+        "app.dart",
+        1,
+        1,
+        [
+          ["raw_symbol", "print"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "low",
+        "description": "CLI main() entrypoint",
+        "kind": "user_input",
+        "node_id": "app:main",
+        "trust_level": "trusted_internal"
+      }
+    ]
+  },
+  "dart_plain": {
+    "edges": [["util", "util:log", "contains"]],
+    "files": {
+      "util.dart": "void log(String s) { print(s); }\n"
+    },
+    "language": "dart",
+    "nodes": [
+      ["util", "util", "module", "util.dart", 1, 2, [], []],
+      ["util:log", "log", "function", "util.dart", 1, 1, [], ["String"]],
+      [
+        "proxy.unresolved:print",
+        "print",
+        "proxy",
+        "util.dart",
+        1,
+        1,
+        [
+          ["raw_symbol", "print"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": []
+  },
+  "dart_vm_entry": {
+    "edges": [["callbacks", "callbacks:nativeCallback", "contains"]],
+    "files": {
+      "callbacks.dart": "@pragma('vm:entry-point')\nvoid nativeCallback(String data) {\n  print(data);\n}\n"
+    },
+    "language": "dart",
+    "nodes": [
+      ["callbacks", "callbacks", "module", "callbacks.dart", 1, 5, [], []],
+      ["callbacks:nativeCallback", "nativeCallback", "function", "callbacks.dart", 2, 4, [], ["String"]],
+      [
+        "proxy.unresolved:print",
+        "print",
+        "proxy",
+        "callbacks.dart",
+        3,
+        3,
+        [
+          ["raw_symbol", "print"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Dart @pragma('vm:entry-point') native callback",
+        "kind": "api",
+        "node_id": "callbacks:nativeCallback",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "erlang_export": {
+    "edges": [
+      ["auth", "auth:login", "contains"],
+      ["auth", "auth:logout", "contains"],
+      ["auth", "auth:internal_only", "contains"]
+    ],
+    "files": {
+      "auth.erl": "-module(auth).\n-export([login/2, logout/1]).\n\nlogin(User, Pass) -> ok.\nlogout(User) -> ok.\ninternal_only() -> ok.\n"
+    },
+    "language": "erlang",
+    "nodes": [
+      ["auth", "auth", "module", "auth.erl", 1, 7, [], []],
+      ["auth:login", "login", "function", "auth.erl", 4, 4, [], [null, null]],
+      ["auth:logout", "logout", "function", "auth.erl", 5, 5, [], [null]],
+      ["auth:internal_only", "internal_only", "function", "auth.erl", 6, 6, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "medium",
+        "description": "Erlang -export declaration",
+        "kind": "api",
+        "node_id": "auth:login",
+        "trust_level": "semi_trusted_external"
+      },
+      {
+        "asset_value": "medium",
+        "description": "Erlang -export declaration",
+        "kind": "api",
+        "node_id": "auth:logout",
+        "trust_level": "semi_trusted_external"
+      }
+    ]
+  },
+  "func_receivers": {
+    "edges": [
+      ["wallet", "wallet:recv_internal", "contains"],
+      ["wallet", "wallet:get_balance", "contains"]
+    ],
+    "files": {
+      "wallet.fc": "() recv_internal() impure { }\nint get_balance() method_id { return 1; }\n"
+    },
+    "language": "func",
+    "nodes": [
+      ["wallet", "wallet", "module", "wallet.fc", 1, 3, [], []],
+      ["wallet:recv_internal", "recv_internal", "function", "wallet.fc", 1, 1, [], []],
+      ["wallet:get_balance", "get_balance", "function", "wallet.fc", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Func receiver/getter entrypoint",
+        "kind": "api",
+        "node_id": "wallet:recv_internal",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "description": "Func receiver/getter entrypoint",
+        "kind": "api",
+        "node_id": "wallet:get_balance",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "go_gin": {
+    "edges": [
+      ["app", "app:getUser", "contains"],
+      ["app", "app:main", "contains"]
+    ],
+    "files": {
+      "app.go": "package main\nimport \"github.com/gin-gonic/gin\"\n\nfunc getUser(c *gin.Context) {}\n\nfunc main() {\n    r := gin.Default()\n    r.GET(\"/users/:id\", getUser)\n}\n"
+    },
+    "language": "go",
+    "nodes": [
+      ["app", "app", "module", "app.go", 1, 10, [], []],
+      ["app:getUser", "getUser", "function", "app.go", 4, 4, [], ["*gin.Context"]],
+      ["app:main", "main", "function", "app.go", 6, 9, [], []],
+      [
+        "proxy.unresolved:gin.Default",
+        "gin.Default",
+        "proxy",
+        "app.go",
+        7,
+        7,
+        [
+          ["raw_symbol", "gin.Default"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ],
+      [
+        "proxy.unresolved:r.GET",
+        "r.GET",
+        "proxy",
+        "app.go",
+        8,
+        8,
+        [
+          ["raw_symbol", "r.GET"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "low",
+        "description": "CLI main() entrypoint",
+        "kind": "user_input",
+        "node_id": "app:main",
+        "trust_level": "trusted_internal"
+      },
+      {
+        "asset_value": "high",
+        "description": "Go HTTP handler (net/http or router DSL)",
+        "kind": "api",
+        "node_id": "app:getUser",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "go_handlefunc": {
+    "edges": [
+      ["server", "server:loginHandler", "contains"],
+      ["server", "server:main", "contains"]
+    ],
+    "files": {
+      "server.go": "package main\nimport \"net/http\"\n\nfunc loginHandler(w http.ResponseWriter, r *http.Request) {}\n\nfunc main() {\n    http.HandleFunc(\"/login\", loginHandler)\n}\n"
+    },
+    "language": "go",
+    "nodes": [
+      ["server", "server", "module", "server.go", 1, 9, [], []],
+      [
+        "server:loginHandler",
+        "loginHandler",
+        "function",
+        "server.go",
+        4,
+        4,
+        [],
+        ["http.ResponseWriter", "*http.Request"]
+      ],
+      ["server:main", "main", "function", "server.go", 6, 8, [], []],
+      [
+        "proxy.unresolved:http.HandleFunc",
+        "http.HandleFunc",
+        "proxy",
+        "server.go",
+        7,
+        7,
+        [
+          ["raw_symbol", "http.HandleFunc"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "low",
+        "description": "CLI main() entrypoint",
+        "kind": "user_input",
+        "node_id": "server:main",
+        "trust_level": "trusted_internal"
+      },
+      {
+        "asset_value": "high",
+        "description": "Go HTTP handler (net/http or router DSL)",
+        "kind": "api",
+        "node_id": "server:loginHandler",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "java_jaxrs": {
+    "edges": [
+      ["Resource", "Resource:UserResource", "contains"],
+      ["Resource:UserResource", "Resource:UserResource.get", "contains"]
+    ],
+    "files": {
+      "Resource.java": "import javax.ws.rs.*;\n\n@Path(\"/users\")\npublic class UserResource {\n    @GET\n    @Path(\"/{id}\")\n    public User get(@PathParam(\"id\") long id) {\n        return null;\n    }\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["Resource", "Resource", "module", "Resource.java", 1, 11, [], []],
+      ["Resource:UserResource", "UserResource", "class", "Resource.java", 3, 10, [], []],
+      ["Resource:UserResource.get", "get", "method", "Resource.java", 5, 9, [], ["long"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "JAX-RS handler",
+        "kind": "api",
+        "node_id": "Resource:UserResource.get",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "java_spring": {
+    "edges": [
+      ["UserController", "UserController:UserController", "contains"],
+      ["UserController:UserController", "UserController:UserController.get", "contains"]
+    ],
+    "files": {
+      "UserController.java": "import org.springframework.web.bind.annotation.*;\n\n@RestController\npublic class UserController {\n    @GetMapping(\"/users/{id}\")\n    public User get(@PathVariable long id) {\n        return null;\n    }\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["UserController", "UserController", "module", "UserController.java", 1, 10, [], []],
+      ["UserController:UserController", "UserController", "class", "UserController.java", 3, 9, [], []],
+      ["UserController:UserController.get", "get", "method", "UserController.java", 5, 8, [], ["long"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler",
+        "kind": "api",
+        "node_id": "UserController:UserController.get",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "kotlin_android": {
+    "edges": [
+      ["MainActivity", "MainActivity:MainActivity", "contains"],
+      ["MainActivity:MainActivity", "MainActivity:MainActivity.onCreate", "contains"]
+    ],
+    "files": {
+      "MainActivity.kt": "package com.example\n\nclass MainActivity {\n    fun onCreate(bundle: Bundle?) {\n        super.onCreate(bundle)\n    }\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["MainActivity", "MainActivity", "module", "MainActivity.kt", 1, 8, [], []],
+      ["MainActivity:MainActivity", "MainActivity", "class", "MainActivity.kt", 3, 7, [], []],
+      ["MainActivity:MainActivity.onCreate", "onCreate", "method", "MainActivity.kt", 4, 6, [], ["Bundle?"]],
+      [
+        "proxy.unresolved:super.onCreate",
+        "super.onCreate",
+        "proxy",
+        "MainActivity.kt",
+        5,
+        5,
+        [
+          ["raw_symbol", "super.onCreate"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "MainActivity:MainActivity.onCreate",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "kotlin_helper": {
+    "edges": [
+      ["Util", "Util:Util", "contains"],
+      ["Util:Util", "Util:Util.helper", "contains"]
+    ],
+    "files": {
+      "Util.kt": "class Util {\n    fun helper(x: Int): Int { return x + 1 }\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["Util", "Util", "module", "Util.kt", 1, 4, [], []],
+      ["Util:Util", "Util", "class", "Util.kt", 1, 3, [], []],
+      ["Util:Util.helper", "helper", "method", "Util.kt", 2, 2, [], ["Int"]]
+    ],
+    "surface": []
+  },
+  "kotlin_spring": {
+    "edges": [
+      ["UserController", "UserController:UserController", "contains"],
+      ["UserController:UserController", "UserController:UserController.get", "contains"]
+    ],
+    "files": {
+      "UserController.kt": "import org.springframework.web.bind.annotation.*\n\n@RestController\nclass UserController {\n    @GetMapping(\"/users/{id}\")\n    fun get(id: Long): String { return \"ok\" }\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["UserController", "UserController", "module", "UserController.kt", 1, 8, [], []],
+      ["UserController:UserController", "UserController", "class", "UserController.kt", 3, 7, [], []],
+      ["UserController:UserController.get", "get", "method", "UserController.kt", 5, 6, [], ["Long"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler (Kotlin)",
+        "kind": "api",
+        "node_id": "UserController:UserController.get",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "move_public_entry": {
+    "edges": [
+      ["m", "m:0x1::m", "contains"],
+      ["m:0x1::m", "m:0x1::m:main", "contains"]
+    ],
+    "files": {
+      "m.move": "module 0x1::m { public entry fun main(account: &signer) { } }\n"
+    },
+    "language": "move",
+    "nodes": [
+      ["m", "m", "module", "m.move", 1, 2, [], []],
+      ["m:0x1::m", "m", "module", "m.move", 1, 2, [], []],
+      ["m:0x1::m:main", "main", "function", "m.move", 1, 1, [], [null]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Move public/entry function",
+        "kind": "api",
+        "node_id": "m:0x1::m:main",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "objc_app_delegate": {
+    "edges": [
+      ["AppDelegate", "AppDelegate:AppDelegate", "contains"],
+      ["AppDelegate:AppDelegate", "AppDelegate:AppDelegate.application:didFinishLaunchingWithOptions:", "contains"]
+    ],
+    "files": {
+      "AppDelegate.m": "#import <UIKit/UIKit.h>\n@interface AppDelegate : NSObject\n- (BOOL)application:(UIApplication *)app didFinishLaunchingWithOptions:(NSDictionary *)opts;\n@end\n@implementation AppDelegate\n- (BOOL)application:(UIApplication *)app didFinishLaunchingWithOptions:(NSDictionary *)opts {\n    return YES;\n}\n@end\n"
+    },
+    "language": "objc",
+    "nodes": [
+      ["AppDelegate", "AppDelegate", "module", "AppDelegate.m", 1, 10, [], []],
+      ["AppDelegate:AppDelegate", "AppDelegate", "class", "AppDelegate.m", 2, 4, [], []],
+      [
+        "AppDelegate:AppDelegate.application:didFinishLaunchingWithOptions:",
+        "application:didFinishLaunchingWithOptions:",
+        "method",
+        "AppDelegate.m",
+        6,
+        8,
+        [],
+        ["UIApplication *", "NSDictionary *"]
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Objective-C UIApplicationDelegate lifecycle method",
+        "kind": "api",
+        "node_id": "AppDelegate:AppDelegate.application:didFinishLaunchingWithOptions:",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "objc_non_app": {
+    "edges": [
+      ["Foo", "Foo:Foo", "contains"],
+      ["Foo:Foo", "Foo:Foo.helper", "contains"]
+    ],
+    "files": {
+      "Foo.m": "@interface Foo : NSObject\n- (void)helper;\n@end\n@implementation Foo\n- (void)helper { }\n@end\n"
+    },
+    "language": "objc",
+    "nodes": [
+      ["Foo", "Foo", "module", "Foo.m", 1, 7, [], []],
+      ["Foo:Foo", "Foo", "class", "Foo.m", 1, 3, [], []],
+      ["Foo:Foo.helper", "helper", "method", "Foo.m", 5, 5, [], []]
+    ],
+    "surface": []
+  },
+  "php_glob": {
+    "edges": [
+      ["lib", "lib:helper", "contains"],
+      ["public_html.index", "public_html.index:index", "contains"],
+      ["public_html.admin.login", "public_html.admin.login:login", "contains"]
+    ],
+    "files": {
+      ".trailmark/entrypoints.toml": "[[entrypoint]]\nfile_glob = \"public_html/**/*.php\"\nkind = \"user_input\"\ntrust = \"untrusted_external\"\nasset_value = \"high\"\ndescription = \"Web-exposed PHP\"\n",
+      "lib.php": "<?php\nfunction helper() { return 3; }\n",
+      "public_html/admin/login.php": "<?php\nfunction login() { return 2; }\n",
+      "public_html/index.php": "<?php\nfunction index() { return 1; }\n"
+    },
+    "language": "php",
+    "nodes": [
+      ["lib", "lib", "module", "lib.php", 1, 3, [], []],
+      ["lib:helper", "helper", "function", "lib.php", 2, 2, [], []],
+      ["public_html.index", "public_html.index", "module", "public_html/index.php", 1, 3, [], []],
+      ["public_html.index:index", "index", "function", "public_html/index.php", 2, 2, [], []],
+      ["public_html.admin.login", "public_html.admin.login", "module", "public_html/admin/login.php", 1, 3, [], []],
+      ["public_html.admin.login:login", "login", "function", "public_html/admin/login.php", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Web-exposed PHP",
+        "kind": "user_input",
+        "node_id": "public_html.index:index",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "description": "Web-exposed PHP",
+        "kind": "user_input",
+        "node_id": "public_html.admin.login:login",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "php_symfony": {
+    "edges": [
+      ["ProductController", "ProductController:App\\Controller", "contains"],
+      ["ProductController", "ProductController:ProductController", "contains"],
+      ["ProductController:ProductController", "ProductController:ProductController.list", "contains"]
+    ],
+    "files": {
+      "ProductController.php": "<?php\nnamespace App\\Controller;\n\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\nclass ProductController {\n    #[Route('/products', methods: ['GET'])]\n    public function list() {\n        return [];\n    }\n}\n"
+    },
+    "language": "php",
+    "nodes": [
+      ["ProductController", "ProductController", "module", "ProductController.php", 1, 12, [], []],
+      ["ProductController:App\\Controller", "App\\Controller", "namespace", "ProductController.php", 2, 2, [], []],
+      ["ProductController:ProductController", "ProductController", "class", "ProductController.php", 6, 11, [], []],
+      ["ProductController:ProductController.list", "list", "method", "ProductController.php", 7, 10, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Symfony Route attribute",
+        "kind": "api",
+        "node_id": "ProductController:ProductController.list",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "rego_rules": {
+    "edges": [
+      ["example.auth", "example.auth:allow", "contains"],
+      ["example.auth", "example.auth:deny", "contains"]
+    ],
+    "files": {
+      "policy.rego": "package example.auth\nallow if { true }\ndeny[msg] if { msg := \"no\" }\n"
+    },
+    "language": "rego",
+    "nodes": [
+      ["example.auth", "example.auth", "module", "policy.rego", 1, 4, [], []],
+      ["example.auth:allow", "allow", "function", "policy.rego", 2, 2, [], []],
+      ["example.auth:deny", "deny", "function", "policy.rego", 3, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rego policy decision rule",
+        "kind": "api",
+        "node_id": "example.auth:allow",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "description": "Rego policy decision rule",
+        "kind": "api",
+        "node_id": "example.auth:deny",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "ruby_rails": {
+    "edges": [
+      ["users_controller", "users_controller:UsersController", "contains"],
+      ["users_controller:UsersController", "users_controller:ApplicationController", "inherits"],
+      ["users_controller:UsersController", "users_controller:UsersController.show", "contains"],
+      ["users_controller:UsersController", "users_controller:UsersController.create", "contains"]
+    ],
+    "files": {
+      "users_controller.rb": "class UsersController < ApplicationController\n  def show\n    @user = User.find(params[:id])\n  end\n\n  def create\n    User.create(params[:user])\n  end\nend\n"
+    },
+    "language": "ruby",
+    "nodes": [
+      ["users_controller", "users_controller", "module", "users_controller.rb", 1, 10, [], []],
+      ["users_controller:UsersController", "UsersController", "class", "users_controller.rb", 1, 9, [], []],
+      ["users_controller:UsersController.show", "show", "method", "users_controller.rb", 2, 4, [], []],
+      ["users_controller:UsersController.create", "create", "method", "users_controller.rb", 6, 8, [], []],
+      [
+        "proxy.unresolved:User.find",
+        "User.find",
+        "proxy",
+        "users_controller.rb",
+        3,
+        3,
+        [
+          ["raw_symbol", "User.find"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ],
+      [
+        "proxy.unresolved:User.create",
+        "User.create",
+        "proxy",
+        "users_controller.rb",
+        7,
+        7,
+        [
+          ["raw_symbol", "User.create"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rails controller action",
+        "kind": "api",
+        "node_id": "users_controller:UsersController.show",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "description": "Rails controller action",
+        "kind": "api",
+        "node_id": "users_controller:UsersController.create",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "ruby_sidekiq": {
+    "edges": [
+      ["mailer", "mailer:EmailWorker", "contains"],
+      ["mailer:EmailWorker", "mailer:EmailWorker.perform", "contains"]
+    ],
+    "files": {
+      "mailer.rb": "class EmailWorker\n  include Sidekiq::Worker\n\n  def perform(user_id)\n    puts user_id\n  end\nend\n"
+    },
+    "language": "ruby",
+    "nodes": [
+      ["mailer", "mailer", "module", "mailer.rb", 1, 8, [], []],
+      ["mailer:EmailWorker", "EmailWorker", "class", "mailer.rb", 1, 7, [], []],
+      ["mailer:EmailWorker.perform", "perform", "method", "mailer.rb", 4, 6, [], [null]],
+      [
+        "proxy.unresolved:mailer:puts",
+        "mailer:puts",
+        "proxy",
+        "mailer.rb",
+        5,
+        5,
+        [
+          ["raw_symbol", "mailer:puts"],
+          ["proxy_kind", "unresolved"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "medium",
+        "description": "Sidekiq worker perform method",
+        "kind": "third_party",
+        "node_id": "mailer:EmailWorker.perform",
+        "trust_level": "semi_trusted_external"
+      }
+    ]
+  },
+  "ruby_util": {
+    "edges": [
+      ["util", "util:Util", "contains"],
+      ["util:Util", "util:Util.helper", "contains"]
+    ],
+    "files": {
+      "util.rb": "class Util\n  def helper(x)\n    x + 1\n  end\nend\n"
+    },
+    "language": "ruby",
+    "nodes": [
+      ["util", "util", "module", "util.rb", 1, 6, [], []],
+      ["util:Util", "Util", "class", "util.rb", 1, 5, [], []],
+      ["util:Util.helper", "helper", "method", "util.rb", 2, 4, [], [null]]
+    ],
+    "surface": []
+  },
+  "rust_actix_get": {
+    "edges": [["server", "server:get_user", "contains"]],
+    "files": {
+      "server.rs": "use actix_web::{get, Responder};\n\n#[get(\"/users/{id}\")]\nasync fn get_user() -> impl Responder {\n    \"ok\"\n}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["server", "server", "module", "server.rs", 1, 7, [], []],
+      ["server:get_user", "get_user", "function", "server.rs", 4, 6, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust HTTP handler attribute",
+        "kind": "api",
+        "node_id": "server:get_user",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "rust_no_mangle": {
+    "edges": [["ffi", "ffi:add_one", "contains"]],
+    "files": {
+      "ffi.rs": "#[no_mangle]\npub extern \"C\" fn add_one(x: i32) -> i32 {\n    x + 1\n}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["ffi", "ffi", "module", "ffi.rs", 1, 5, [], []],
+      ["ffi:add_one", "add_one", "function", "ffi.rs", 2, 4, [], ["i32"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust FFI export (#[no_mangle])",
+        "kind": "api",
+        "node_id": "ffi:add_one",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "schema_graphql": {
+    "edges": [
+      ["schema", "schema:Query", "contains"],
+      ["schema:Query", "schema:Query.user", "contains"],
+      ["schema", "schema:User", "contains"],
+      ["schema:User", "schema:User.id", "contains"]
+    ],
+    "files": {
+      "auth.proto": "syntax = \"proto3\"; package example.auth; service Auth { rpc Login (Request) returns (Response); } message Request { string token = 1; } message Response { bool ok = 1; }\n",
+      "auth.thrift": "namespace py example.auth\nstruct Request { 1: string token }\nservice Auth { bool login(1: Request req) }\n",
+      "schema.graphql": "type Query { user(id: ID!): User }\ntype User { id: ID! }\n"
+    },
+    "language": "graphql",
+    "nodes": [
+      ["schema", "schema", "module", "schema.graphql", 1, 3, [], []],
+      ["schema:Query", "Query", "interface", "schema.graphql", 1, 1, [], []],
+      ["schema:Query.user", "user", "method", "schema.graphql", 1, 1, [["schema_role", "root_operation"]], ["ID"]],
+      ["schema:User", "User", "interface", "schema.graphql", 2, 2, [], []],
+      ["schema:User.id", "id", "method", "schema.graphql", 2, 2, [["schema_role", "field"]], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "schema_role": "root_operation"
+        },
+        "description": "GraphQL root operation field",
+        "kind": "api",
+        "node_id": "schema:Query.user",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "schema_proto": {
+    "edges": [
+      ["example.auth", "example.auth:Auth", "contains"],
+      ["example.auth:Auth", "example.auth:Auth.Login", "contains"],
+      ["example.auth", "example.auth:Request", "contains"],
+      ["example.auth:Request", "example.auth:Request.token", "contains"],
+      ["example.auth", "example.auth:Response", "contains"],
+      ["example.auth:Response", "example.auth:Response.ok", "contains"]
+    ],
+    "files": {
+      "auth.proto": "syntax = \"proto3\"; package example.auth; service Auth { rpc Login (Request) returns (Response); } message Request { string token = 1; } message Response { bool ok = 1; }\n",
+      "auth.thrift": "namespace py example.auth\nstruct Request { 1: string token }\nservice Auth { bool login(1: Request req) }\n",
+      "schema.graphql": "type Query { user(id: ID!): User }\ntype User { id: ID! }\n"
+    },
+    "language": "proto",
+    "nodes": [
+      ["example.auth", "example.auth", "module", "auth.proto", 1, 2, [], []],
+      ["example.auth:Auth", "Auth", "interface", "auth.proto", 1, 1, [], []],
+      ["example.auth:Auth.Login", "Login", "method", "auth.proto", 1, 1, [["schema_role", "rpc"]], ["Request"]],
+      ["example.auth:Request", "Request", "struct", "auth.proto", 1, 1, [], []],
+      ["example.auth:Request.token", "token", "method", "auth.proto", 1, 1, [["schema_role", "field"]], []],
+      ["example.auth:Response", "Response", "struct", "auth.proto", 1, 1, [], []],
+      ["example.auth:Response.ok", "ok", "method", "auth.proto", 1, 1, [["schema_role", "field"]], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "schema_role": "rpc"
+        },
+        "description": "Protocol Buffers service RPC",
+        "kind": "api",
+        "node_id": "example.auth:Auth.Login",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "schema_thrift": {
+    "edges": [
+      ["example.auth", "example.auth:Request", "contains"],
+      ["example.auth:Request", "example.auth:Request.token", "contains"],
+      ["example.auth", "example.auth:Auth", "contains"],
+      ["example.auth:Auth", "example.auth:Auth.login", "contains"]
+    ],
+    "files": {
+      "auth.proto": "syntax = \"proto3\"; package example.auth; service Auth { rpc Login (Request) returns (Response); } message Request { string token = 1; } message Response { bool ok = 1; }\n",
+      "auth.thrift": "namespace py example.auth\nstruct Request { 1: string token }\nservice Auth { bool login(1: Request req) }\n",
+      "schema.graphql": "type Query { user(id: ID!): User }\ntype User { id: ID! }\n"
+    },
+    "language": "thrift",
+    "nodes": [
+      ["example.auth", "example.auth", "module", "auth.thrift", 1, 4, [], []],
+      ["example.auth:Request", "Request", "struct", "auth.thrift", 2, 2, [], []],
+      ["example.auth:Request.token", "token", "method", "auth.thrift", 2, 2, [["schema_role", "field"]], []],
+      ["example.auth:Auth", "Auth", "interface", "auth.thrift", 3, 3, [], []],
+      [
+        "example.auth:Auth.login",
+        "login",
+        "method",
+        "auth.thrift",
+        3,
+        3,
+        [["schema_role", "service_function"]],
+        ["Request"]
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "schema_role": "service_function"
+        },
+        "description": "Thrift service function",
+        "kind": "api",
+        "node_id": "example.auth:Auth.login",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "sol_external": {
+    "edges": [
+      ["Vault", "Vault:Vault", "contains"],
+      ["Vault:Vault", "Vault:Vault.withdraw", "contains"]
+    ],
+    "files": {
+      "Vault.sol": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\ncontract Vault {\n    function withdraw(uint256 amount) external {\n    }\n}\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["Vault", "Vault", "module", "Vault.sol", 1, 7, [], []],
+      ["Vault:Vault", "Vault", "contract", "Vault.sol", 3, 6, [], []],
+      [
+        "Vault:Vault.withdraw",
+        "withdraw",
+        "method",
+        "Vault.sol",
+        4,
+        5,
+        [
+          ["solidity_visibility", "external"],
+          ["solidity_container_kind", "contract"]
+        ],
+        ["uint256"]
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_visibility": "external"
+        },
+        "description": "Solidity external/public function",
+        "kind": "api",
+        "node_id": "Vault:Vault.withdraw",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "sol_fallback_receive": {
+    "edges": [
+      ["Wallet", "Wallet:Wallet", "contains"],
+      ["Wallet:Wallet", "Wallet:Wallet.receive", "contains"],
+      ["Wallet:Wallet", "Wallet:Wallet.fallback", "contains"]
+    ],
+    "files": {
+      "Wallet.sol": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\ncontract Wallet {\n    receive() external payable {}\n    fallback() external payable {}\n}\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["Wallet", "Wallet", "module", "Wallet.sol", 1, 7, [], []],
+      ["Wallet:Wallet", "Wallet", "contract", "Wallet.sol", 3, 6, [], []],
+      [
+        "Wallet:Wallet.receive",
+        "receive",
+        "method",
+        "Wallet.sol",
+        4,
+        4,
+        [
+          ["solidity_visibility", "external"],
+          ["solidity_mutability", "payable"],
+          ["solidity_container_kind", "contract"]
+        ],
+        []
+      ],
+      [
+        "Wallet:Wallet.fallback",
+        "fallback",
+        "method",
+        "Wallet.sol",
+        5,
+        5,
+        [
+          ["solidity_visibility", "external"],
+          ["solidity_mutability", "payable"],
+          ["solidity_container_kind", "contract"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_mutability": "payable",
+          "solidity_visibility": "external"
+        },
+        "description": "Solidity fallback/receive",
+        "kind": "api",
+        "node_id": "Wallet:Wallet.receive",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_mutability": "payable",
+          "solidity_visibility": "external"
+        },
+        "description": "Solidity fallback/receive",
+        "kind": "api",
+        "node_id": "Wallet:Wallet.fallback",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "sol_internal": {
+    "edges": [
+      ["Lib", "Lib:Lib", "contains"],
+      ["Lib:Lib", "Lib:Lib._helper", "contains"]
+    ],
+    "files": {
+      "Lib.sol": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\ncontract Lib {\n    function _helper(uint256 x) internal pure returns (uint256) {\n        return x + 1;\n    }\n}\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["Lib", "Lib", "module", "Lib.sol", 1, 8, [], []],
+      ["Lib:Lib", "Lib", "contract", "Lib.sol", 3, 7, [], []],
+      [
+        "Lib:Lib._helper",
+        "_helper",
+        "method",
+        "Lib.sol",
+        4,
+        6,
+        [
+          ["solidity_visibility", "internal"],
+          ["solidity_mutability", "pure"],
+          ["solidity_container_kind", "contract"]
+        ],
+        ["uint256"]
+      ]
+    ],
+    "surface": []
+  },
+  "sol_public": {
+    "edges": [
+      ["Token", "Token:Token", "contains"],
+      ["Token:Token", "Token:Token.balanceOf", "contains"]
+    ],
+    "files": {
+      "Token.sol": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\ncontract Token {\n    function balanceOf(address who) public view returns (uint256) {\n        return 0;\n    }\n}\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["Token", "Token", "module", "Token.sol", 1, 8, [], []],
+      ["Token:Token", "Token", "contract", "Token.sol", 3, 7, [], []],
+      [
+        "Token:Token.balanceOf",
+        "balanceOf",
+        "method",
+        "Token.sol",
+        4,
+        6,
+        [
+          ["solidity_visibility", "public"],
+          ["solidity_mutability", "view"],
+          ["solidity_container_kind", "contract"]
+        ],
+        ["address"]
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_mutability": "view",
+          "solidity_visibility": "public"
+        },
+        "description": "Solidity external/public function",
+        "kind": "api",
+        "node_id": "Token:Token.balanceOf",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "sway_abi": {
+    "edges": [
+      ["wallet", "wallet:Wallet", "contains"],
+      ["wallet:Wallet", "wallet:Wallet.deposit", "contains"],
+      ["wallet", "wallet:helper", "contains"]
+    ],
+    "files": {
+      "wallet.sw": "contract;\nabi Wallet { fn deposit(amount: u64); }\npub fn helper(amount: u64) -> u64 { amount }\n"
+    },
+    "language": "sway",
+    "nodes": [
+      ["wallet", "wallet", "module", "wallet.sw", 1, 4, [], []],
+      ["wallet:Wallet", "Wallet", "interface", "wallet.sw", 2, 2, [], []],
+      ["wallet:Wallet.deposit", "deposit", "method", "wallet.sw", 2, 2, [], ["u64"]],
+      ["wallet:helper", "helper", "function", "wallet.sw", 3, 3, [], ["u64"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Sway ABI method",
+        "kind": "api",
+        "node_id": "wallet:Wallet.deposit",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "description": "Sway public function",
+        "kind": "api",
+        "node_id": "wallet:helper",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "swift_main": {
+    "edges": [
+      ["app", "app:App", "contains"],
+      ["app:App", "app:App.main", "contains"]
+    ],
+    "files": {
+      "app.swift": "@main\nstruct App {\n    static func main() {}\n}\n"
+    },
+    "language": "swift",
+    "nodes": [
+      ["app", "app", "module", "app.swift", 1, 5, [], []],
+      ["app:App", "App", "struct", "app.swift", 1, 4, [], []],
+      ["app:App.main", "main", "method", "app.swift", 3, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Swift @main app entrypoint",
+        "kind": "user_input",
+        "node_id": "app:App.main",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tact_receivers": {
+    "edges": [
+      ["wallet", "wallet:Wallet", "contains"],
+      ["wallet:Wallet", "wallet:Wallet.init", "contains"],
+      ["wallet:Wallet", "wallet:Wallet.receive", "contains"]
+    ],
+    "files": {
+      "wallet.tact": "contract Wallet { init(owner: Address) { } receive(\"ping\") { } }\n"
+    },
+    "language": "tact",
+    "nodes": [
+      ["wallet", "wallet", "module", "wallet.tact", 1, 2, [], []],
+      ["wallet:Wallet", "Wallet", "contract", "wallet.tact", 1, 1, [], []],
+      ["wallet:Wallet.init", "init", "method", "wallet.tact", 1, 1, [["tact_role", "init"]], ["Address"]],
+      ["wallet:Wallet.receive", "receive", "method", "wallet.tact", 1, 1, [["tact_role", "receive"]], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "tact_role": "init"
+        },
+        "description": "Tact contract receiver/initializer",
+        "kind": "api",
+        "node_id": "wallet:Wallet.init",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "attributes": {
+          "tact_role": "receive"
+        },
+        "description": "Tact contract receiver/initializer",
+        "kind": "api",
+        "node_id": "wallet:Wallet.receive",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_actix_delete": {
+    "edges": [["h", "h:handler", "contains"]],
+    "files": {
+      "h.rs": "#[delete(\"/x\")]\nasync fn handler() {}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["h", "h", "module", "h.rs", 1, 3, [], []],
+      ["h:handler", "handler", "function", "h.rs", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust HTTP handler attribute",
+        "kind": "api",
+        "node_id": "h:handler",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_actix_get": {
+    "edges": [["h", "h:handler", "contains"]],
+    "files": {
+      "h.rs": "#[get(\"/x\")]\nasync fn handler() {}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["h", "h", "module", "h.rs", 1, 3, [], []],
+      ["h:handler", "handler", "function", "h.rs", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust HTTP handler attribute",
+        "kind": "api",
+        "node_id": "h:handler",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_actix_head": {
+    "edges": [["h", "h:handler", "contains"]],
+    "files": {
+      "h.rs": "#[head(\"/x\")]\nasync fn handler() {}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["h", "h", "module", "h.rs", 1, 3, [], []],
+      ["h:handler", "handler", "function", "h.rs", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust HTTP handler attribute",
+        "kind": "api",
+        "node_id": "h:handler",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_actix_options": {
+    "edges": [["h", "h:handler", "contains"]],
+    "files": {
+      "h.rs": "#[options(\"/x\")]\nasync fn handler() {}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["h", "h", "module", "h.rs", 1, 3, [], []],
+      ["h:handler", "handler", "function", "h.rs", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust HTTP handler attribute",
+        "kind": "api",
+        "node_id": "h:handler",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_actix_patch": {
+    "edges": [["h", "h:handler", "contains"]],
+    "files": {
+      "h.rs": "#[patch(\"/x\")]\nasync fn handler() {}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["h", "h", "module", "h.rs", 1, 3, [], []],
+      ["h:handler", "handler", "function", "h.rs", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust HTTP handler attribute",
+        "kind": "api",
+        "node_id": "h:handler",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_actix_post": {
+    "edges": [["h", "h:handler", "contains"]],
+    "files": {
+      "h.rs": "#[post(\"/x\")]\nasync fn handler() {}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["h", "h", "module", "h.rs", 1, 3, [], []],
+      ["h:handler", "handler", "function", "h.rs", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust HTTP handler attribute",
+        "kind": "api",
+        "node_id": "h:handler",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_actix_put": {
+    "edges": [["h", "h:handler", "contains"]],
+    "files": {
+      "h.rs": "#[put(\"/x\")]\nasync fn handler() {}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["h", "h", "module", "h.rs", 1, 3, [], []],
+      ["h:handler", "handler", "function", "h.rs", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust HTTP handler attribute",
+        "kind": "api",
+        "node_id": "h:handler",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_android_onActivityResult": {
+    "edges": [
+      ["A", "A:Activity", "contains"],
+      ["A:Activity", "A:Activity.onActivityResult", "contains"]
+    ],
+    "files": {
+      "A.kt": "class Activity {\n    fun onActivityResult() {}\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["A", "A", "module", "A.kt", 1, 4, [], []],
+      ["A:Activity", "Activity", "class", "A.kt", 1, 3, [], []],
+      ["A:Activity.onActivityResult", "onActivityResult", "method", "A.kt", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "A:Activity.onActivityResult",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_android_onBind": {
+    "edges": [
+      ["A", "A:Activity", "contains"],
+      ["A:Activity", "A:Activity.onBind", "contains"]
+    ],
+    "files": {
+      "A.kt": "class Activity {\n    fun onBind() {}\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["A", "A", "module", "A.kt", 1, 4, [], []],
+      ["A:Activity", "Activity", "class", "A.kt", 1, 3, [], []],
+      ["A:Activity.onBind", "onBind", "method", "A.kt", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "A:Activity.onBind",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_android_onCreate": {
+    "edges": [
+      ["A", "A:Activity", "contains"],
+      ["A:Activity", "A:Activity.onCreate", "contains"]
+    ],
+    "files": {
+      "A.kt": "class Activity {\n    fun onCreate() {}\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["A", "A", "module", "A.kt", 1, 4, [], []],
+      ["A:Activity", "Activity", "class", "A.kt", 1, 3, [], []],
+      ["A:Activity.onCreate", "onCreate", "method", "A.kt", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "A:Activity.onCreate",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_android_onHandleIntent": {
+    "edges": [
+      ["A", "A:Activity", "contains"],
+      ["A:Activity", "A:Activity.onHandleIntent", "contains"]
+    ],
+    "files": {
+      "A.kt": "class Activity {\n    fun onHandleIntent() {}\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["A", "A", "module", "A.kt", 1, 4, [], []],
+      ["A:Activity", "Activity", "class", "A.kt", 1, 3, [], []],
+      ["A:Activity.onHandleIntent", "onHandleIntent", "method", "A.kt", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "A:Activity.onHandleIntent",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_android_onNewIntent": {
+    "edges": [
+      ["A", "A:Activity", "contains"],
+      ["A:Activity", "A:Activity.onNewIntent", "contains"]
+    ],
+    "files": {
+      "A.kt": "class Activity {\n    fun onNewIntent() {}\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["A", "A", "module", "A.kt", 1, 4, [], []],
+      ["A:Activity", "Activity", "class", "A.kt", 1, 3, [], []],
+      ["A:Activity.onNewIntent", "onNewIntent", "method", "A.kt", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "A:Activity.onNewIntent",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_android_onReceive": {
+    "edges": [
+      ["A", "A:Activity", "contains"],
+      ["A:Activity", "A:Activity.onReceive", "contains"]
+    ],
+    "files": {
+      "A.kt": "class Activity {\n    fun onReceive() {}\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["A", "A", "module", "A.kt", 1, 4, [], []],
+      ["A:Activity", "Activity", "class", "A.kt", 1, 3, [], []],
+      ["A:Activity.onReceive", "onReceive", "method", "A.kt", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "A:Activity.onReceive",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_android_onResume": {
+    "edges": [
+      ["A", "A:Activity", "contains"],
+      ["A:Activity", "A:Activity.onResume", "contains"]
+    ],
+    "files": {
+      "A.kt": "class Activity {\n    fun onResume() {}\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["A", "A", "module", "A.kt", 1, 4, [], []],
+      ["A:Activity", "Activity", "class", "A.kt", 1, 3, [], []],
+      ["A:Activity.onResume", "onResume", "method", "A.kt", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "A:Activity.onResume",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_android_onStart": {
+    "edges": [
+      ["A", "A:Activity", "contains"],
+      ["A:Activity", "A:Activity.onStart", "contains"]
+    ],
+    "files": {
+      "A.kt": "class Activity {\n    fun onStart() {}\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["A", "A", "module", "A.kt", 1, 4, [], []],
+      ["A:Activity", "Activity", "class", "A.kt", 1, 3, [], []],
+      ["A:Activity.onStart", "onStart", "method", "A.kt", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Android component lifecycle method",
+        "kind": "api",
+        "node_id": "A:Activity.onStart",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_aspnet_HttpDelete": {
+    "edges": [
+      ["Ctl", "Ctl:Ctl", "contains"],
+      ["Ctl:Ctl", "Ctl:Ctl.F", "contains"]
+    ],
+    "files": {
+      "Ctl.cs": "public class Ctl {\n    [HttpDelete(\"/x\")]\n    public object F() => null;\n}\n"
+    },
+    "language": "c_sharp",
+    "nodes": [
+      ["Ctl", "Ctl", "module", "Ctl.cs", 1, 5, [], []],
+      ["Ctl:Ctl", "Ctl", "class", "Ctl.cs", 1, 4, [], []],
+      ["Ctl:Ctl.F", "F", "method", "Ctl.cs", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "ASP.NET Core HTTP handler",
+        "kind": "api",
+        "node_id": "Ctl:Ctl.F",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_aspnet_HttpGet": {
+    "edges": [
+      ["Ctl", "Ctl:Ctl", "contains"],
+      ["Ctl:Ctl", "Ctl:Ctl.F", "contains"]
+    ],
+    "files": {
+      "Ctl.cs": "public class Ctl {\n    [HttpGet(\"/x\")]\n    public object F() => null;\n}\n"
+    },
+    "language": "c_sharp",
+    "nodes": [
+      ["Ctl", "Ctl", "module", "Ctl.cs", 1, 5, [], []],
+      ["Ctl:Ctl", "Ctl", "class", "Ctl.cs", 1, 4, [], []],
+      ["Ctl:Ctl.F", "F", "method", "Ctl.cs", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "ASP.NET Core HTTP handler",
+        "kind": "api",
+        "node_id": "Ctl:Ctl.F",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_aspnet_HttpPatch": {
+    "edges": [
+      ["Ctl", "Ctl:Ctl", "contains"],
+      ["Ctl:Ctl", "Ctl:Ctl.F", "contains"]
+    ],
+    "files": {
+      "Ctl.cs": "public class Ctl {\n    [HttpPatch(\"/x\")]\n    public object F() => null;\n}\n"
+    },
+    "language": "c_sharp",
+    "nodes": [
+      ["Ctl", "Ctl", "module", "Ctl.cs", 1, 5, [], []],
+      ["Ctl:Ctl", "Ctl", "class", "Ctl.cs", 1, 4, [], []],
+      ["Ctl:Ctl.F", "F", "method", "Ctl.cs", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "ASP.NET Core HTTP handler",
+        "kind": "api",
+        "node_id": "Ctl:Ctl.F",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_aspnet_HttpPost": {
+    "edges": [
+      ["Ctl", "Ctl:Ctl", "contains"],
+      ["Ctl:Ctl", "Ctl:Ctl.F", "contains"]
+    ],
+    "files": {
+      "Ctl.cs": "public class Ctl {\n    [HttpPost(\"/x\")]\n    public object F() => null;\n}\n"
+    },
+    "language": "c_sharp",
+    "nodes": [
+      ["Ctl", "Ctl", "module", "Ctl.cs", 1, 5, [], []],
+      ["Ctl:Ctl", "Ctl", "class", "Ctl.cs", 1, 4, [], []],
+      ["Ctl:Ctl.F", "F", "method", "Ctl.cs", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "ASP.NET Core HTTP handler",
+        "kind": "api",
+        "node_id": "Ctl:Ctl.F",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_aspnet_HttpPut": {
+    "edges": [
+      ["Ctl", "Ctl:Ctl", "contains"],
+      ["Ctl:Ctl", "Ctl:Ctl.F", "contains"]
+    ],
+    "files": {
+      "Ctl.cs": "public class Ctl {\n    [HttpPut(\"/x\")]\n    public object F() => null;\n}\n"
+    },
+    "language": "c_sharp",
+    "nodes": [
+      ["Ctl", "Ctl", "module", "Ctl.cs", 1, 5, [], []],
+      ["Ctl:Ctl", "Ctl", "class", "Ctl.cs", 1, 4, [], []],
+      ["Ctl:Ctl.F", "F", "method", "Ctl.cs", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "ASP.NET Core HTTP handler",
+        "kind": "api",
+        "node_id": "Ctl:Ctl.F",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_azure": {
+    "edges": [
+      ["Fn", "Fn:Fn", "contains"],
+      ["Fn:Fn", "Fn:Fn.Run", "contains"]
+    ],
+    "files": {
+      "Fn.cs": "public class Fn {\n    [Function(\"run\")]\n    public object Run() => null;\n}\n"
+    },
+    "language": "c_sharp",
+    "nodes": [
+      ["Fn", "Fn", "module", "Fn.cs", 1, 5, [], []],
+      ["Fn:Fn", "Fn", "class", "Fn.cs", 1, 4, [], []],
+      ["Fn:Fn.Run", "Run", "method", "Fn.cs", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Azure Function",
+        "kind": "api",
+        "node_id": "Fn:Fn.Run",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_cpp_extern_c": {
+    "edges": [["api", "api:expose", "contains"]],
+    "files": {
+      "api.cpp": "extern \"C\" int expose(int x) { return x; }\n"
+    },
+    "language": "cpp",
+    "nodes": [
+      ["api", "api", "module", "api.cpp", 1, 2, [], []],
+      ["api:expose", "expose", "function", "api.cpp", 1, 1, [], ["int"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "C/C++ exported symbol (extern \"C\" / visibility / dllexport)",
+        "kind": "api",
+        "node_id": "api:expose",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_dart_vm": {
+    "edges": [["callbacks", "callbacks:fn", "contains"]],
+    "files": {
+      "callbacks.dart": "@pragma('vm:entry-point')\nvoid fn() {}\n"
+    },
+    "language": "dart",
+    "nodes": [
+      ["callbacks", "callbacks", "module", "callbacks.dart", 1, 3, [], []],
+      ["callbacks:fn", "fn", "function", "callbacks.dart", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Dart @pragma('vm:entry-point') native callback",
+        "kind": "api",
+        "node_id": "callbacks:fn",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_java_DeleteMapping": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @DeleteMapping(\"/x\")\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_java_GetMapping": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @GetMapping(\"/x\")\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_java_PatchMapping": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @PatchMapping(\"/x\")\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_java_PostMapping": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @PostMapping(\"/x\")\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_java_PutMapping": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @PutMapping(\"/x\")\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_java_RequestMapping": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @RequestMapping(\"/x\")\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_jaxrs_DELETE": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @DELETE\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "JAX-RS handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_jaxrs_GET": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @GET\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "JAX-RS handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_jaxrs_PATCH": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @PATCH\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "JAX-RS handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_jaxrs_POST": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @POST\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "JAX-RS handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_jaxrs_PUT": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @PUT\n    public void f() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "JAX-RS handler",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_kafka": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.consume", "contains"]
+    ],
+    "files": {
+      "C.java": "class C {\n    @KafkaListener(topics = \"x\")\n    public void consume() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 5, [], []],
+      ["C:C", "C", "class", "C.java", 1, 4, [], []],
+      ["C:C.consume", "consume", "method", "C.java", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "medium",
+        "description": "Kafka listener",
+        "kind": "third_party",
+        "node_id": "C:C.consume",
+        "trust_level": "semi_trusted_external"
+      }
+    ]
+  },
+  "tags_kotlin_spring": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.f", "contains"]
+    ],
+    "files": {
+      "C.kt": "class C {\n    @GetMapping(\"/x\")\n    fun f(): String = \"ok\"\n}\n"
+    },
+    "language": "kotlin",
+    "nodes": [
+      ["C", "C", "module", "C.kt", 1, 5, [], []],
+      ["C:C", "C", "class", "C.kt", 1, 4, [], []],
+      ["C:C.f", "f", "method", "C.kt", 2, 3, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Spring MVC/WebFlux handler (Kotlin)",
+        "kind": "api",
+        "node_id": "C:C.f",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_nextjs_DELETE": {
+    "edges": [["route", "route:DELETE", "contains"]],
+    "files": {
+      "route.ts": "export async function DELETE(req: Request) { return new Response(); }\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["route", "route", "module", "route.ts", 1, 2, [], []],
+      ["route:DELETE", "DELETE", "function", "route.ts", 1, 1, [], ["Request"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:DELETE",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_nextjs_GET": {
+    "edges": [["route", "route:GET", "contains"]],
+    "files": {
+      "route.ts": "export async function GET(req: Request) { return new Response(); }\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["route", "route", "module", "route.ts", 1, 2, [], []],
+      ["route:GET", "GET", "function", "route.ts", 1, 1, [], ["Request"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:GET",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_nextjs_HEAD": {
+    "edges": [["route", "route:HEAD", "contains"]],
+    "files": {
+      "route.ts": "export async function HEAD(req: Request) { return new Response(); }\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["route", "route", "module", "route.ts", 1, 2, [], []],
+      ["route:HEAD", "HEAD", "function", "route.ts", 1, 1, [], ["Request"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:HEAD",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_nextjs_OPTIONS": {
+    "edges": [["route", "route:OPTIONS", "contains"]],
+    "files": {
+      "route.ts": "export async function OPTIONS(req: Request) { return new Response(); }\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["route", "route", "module", "route.ts", 1, 2, [], []],
+      ["route:OPTIONS", "OPTIONS", "function", "route.ts", 1, 1, [], ["Request"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:OPTIONS",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_nextjs_PATCH": {
+    "edges": [["route", "route:PATCH", "contains"]],
+    "files": {
+      "route.ts": "export async function PATCH(req: Request) { return new Response(); }\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["route", "route", "module", "route.ts", 1, 2, [], []],
+      ["route:PATCH", "PATCH", "function", "route.ts", 1, 1, [], ["Request"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:PATCH",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_nextjs_POST": {
+    "edges": [["route", "route:POST", "contains"]],
+    "files": {
+      "route.ts": "export async function POST(req: Request) { return new Response(); }\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["route", "route", "module", "route.ts", 1, 2, [], []],
+      ["route:POST", "POST", "function", "route.ts", 1, 1, [], ["Request"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:POST",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_nextjs_PUT": {
+    "edges": [["route", "route:PUT", "contains"]],
+    "files": {
+      "route.ts": "export async function PUT(req: Request) { return new Response(); }\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["route", "route", "module", "route.ts", 1, 2, [], []],
+      ["route:PUT", "PUT", "function", "route.ts", 1, 1, [], ["Request"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:PUT",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_no_mangle": {
+    "edges": [["ffi", "ffi:expose", "contains"]],
+    "files": {
+      "ffi.rs": "#[no_mangle]\npub extern \"C\" fn expose() {}\n"
+    },
+    "language": "rust",
+    "nodes": [
+      ["ffi", "ffi", "module", "ffi.rs", 1, 3, [], []],
+      ["ffi:expose", "expose", "function", "ffi.rs", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Rust FFI export (#[no_mangle])",
+        "kind": "api",
+        "node_id": "ffi:expose",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_objc_openurl": {
+    "edges": [
+      ["AppDelegate", "AppDelegate:AppDelegate", "contains"],
+      ["AppDelegate:AppDelegate", "AppDelegate:AppDelegate.application:openURL:options:", "contains"]
+    ],
+    "files": {
+      "AppDelegate.m": "@interface AppDelegate : NSObject\n- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)opts;\n@end\n@implementation AppDelegate\n- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)opts { return YES; }\n@end\n"
+    },
+    "language": "objc",
+    "nodes": [
+      ["AppDelegate", "AppDelegate", "module", "AppDelegate.m", 1, 7, [], []],
+      ["AppDelegate:AppDelegate", "AppDelegate", "class", "AppDelegate.m", 1, 3, [], []],
+      [
+        "AppDelegate:AppDelegate.application:openURL:options:",
+        "application:openURL:options:",
+        "method",
+        "AppDelegate.m",
+        5,
+        5,
+        [],
+        ["UIApplication *", "NSURL *", "NSDictionary *"]
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Objective-C UIApplicationDelegate lifecycle method",
+        "kind": "api",
+        "node_id": "AppDelegate:AppDelegate.application:openURL:options:",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_servlet_doDelete": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:HttpServlet", "inherits"],
+      ["C:C", "C:C.doDelete", "contains"]
+    ],
+    "files": {
+      "C.java": "class C extends HttpServlet {\n    public void doDelete() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 4, [], []],
+      ["C:C", "C", "class", "C.java", 1, 3, [], []],
+      ["C:C.doDelete", "doDelete", "method", "C.java", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "HttpServlet method",
+        "kind": "api",
+        "node_id": "C:C.doDelete",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_servlet_doGet": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:HttpServlet", "inherits"],
+      ["C:C", "C:C.doGet", "contains"]
+    ],
+    "files": {
+      "C.java": "class C extends HttpServlet {\n    public void doGet() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 4, [], []],
+      ["C:C", "C", "class", "C.java", 1, 3, [], []],
+      ["C:C.doGet", "doGet", "method", "C.java", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "HttpServlet method",
+        "kind": "api",
+        "node_id": "C:C.doGet",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_servlet_doHead": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:HttpServlet", "inherits"],
+      ["C:C", "C:C.doHead", "contains"]
+    ],
+    "files": {
+      "C.java": "class C extends HttpServlet {\n    public void doHead() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 4, [], []],
+      ["C:C", "C", "class", "C.java", 1, 3, [], []],
+      ["C:C.doHead", "doHead", "method", "C.java", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "HttpServlet method",
+        "kind": "api",
+        "node_id": "C:C.doHead",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_servlet_doOptions": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:HttpServlet", "inherits"],
+      ["C:C", "C:C.doOptions", "contains"]
+    ],
+    "files": {
+      "C.java": "class C extends HttpServlet {\n    public void doOptions() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 4, [], []],
+      ["C:C", "C", "class", "C.java", 1, 3, [], []],
+      ["C:C.doOptions", "doOptions", "method", "C.java", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "HttpServlet method",
+        "kind": "api",
+        "node_id": "C:C.doOptions",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_servlet_doPost": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:HttpServlet", "inherits"],
+      ["C:C", "C:C.doPost", "contains"]
+    ],
+    "files": {
+      "C.java": "class C extends HttpServlet {\n    public void doPost() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 4, [], []],
+      ["C:C", "C", "class", "C.java", 1, 3, [], []],
+      ["C:C.doPost", "doPost", "method", "C.java", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "HttpServlet method",
+        "kind": "api",
+        "node_id": "C:C.doPost",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_servlet_doPut": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:HttpServlet", "inherits"],
+      ["C:C", "C:C.doPut", "contains"]
+    ],
+    "files": {
+      "C.java": "class C extends HttpServlet {\n    public void doPut() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 4, [], []],
+      ["C:C", "C", "class", "C.java", 1, 3, [], []],
+      ["C:C.doPut", "doPut", "method", "C.java", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "HttpServlet method",
+        "kind": "api",
+        "node_id": "C:C.doPut",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_servlet_doTrace": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:HttpServlet", "inherits"],
+      ["C:C", "C:C.doTrace", "contains"]
+    ],
+    "files": {
+      "C.java": "class C extends HttpServlet {\n    public void doTrace() {}\n}\n"
+    },
+    "language": "java",
+    "nodes": [
+      ["C", "C", "module", "C.java", 1, 4, [], []],
+      ["C:C", "C", "class", "C.java", 1, 3, [], []],
+      ["C:C.doTrace", "doTrace", "method", "C.java", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "HttpServlet method",
+        "kind": "api",
+        "node_id": "C:C.doTrace",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_sol_external": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.act", "contains"]
+    ],
+    "files": {
+      "C.sol": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\ncontract C {\n    function act() external {}\n}\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["C", "C", "module", "C.sol", 1, 6, [], []],
+      ["C:C", "C", "contract", "C.sol", 3, 5, [], []],
+      [
+        "C:C.act",
+        "act",
+        "method",
+        "C.sol",
+        4,
+        4,
+        [
+          ["solidity_visibility", "external"],
+          ["solidity_container_kind", "contract"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_visibility": "external"
+        },
+        "description": "Solidity external/public function",
+        "kind": "api",
+        "node_id": "C:C.act",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_sol_interface": {
+    "edges": [
+      ["I", "I:I", "contains"],
+      ["I:I", "I:I.inspect", "contains"]
+    ],
+    "files": {
+      "I.sol": "interface I { function inspect() external view returns (uint); }\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["I", "I", "module", "I.sol", 1, 2, [], []],
+      ["I:I", "I", "interface", "I.sol", 1, 1, [], []],
+      [
+        "I:I.inspect",
+        "inspect",
+        "method",
+        "I.sol",
+        1,
+        1,
+        [
+          ["solidity_visibility", "external"],
+          ["solidity_mutability", "view"],
+          ["solidity_container_kind", "interface"]
+        ],
+        []
+      ]
+    ],
+    "surface": []
+  },
+  "tags_sol_mutability": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.inspect", "contains"]
+    ],
+    "files": {
+      "C.sol": "contract C { function inspect() external view returns (uint) { return 1; } }\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["C", "C", "module", "C.sol", 1, 2, [], []],
+      ["C:C", "C", "contract", "C.sol", 1, 1, [], []],
+      [
+        "C:C.inspect",
+        "inspect",
+        "method",
+        "C.sol",
+        1,
+        1,
+        [
+          ["solidity_visibility", "external"],
+          ["solidity_mutability", "view"],
+          ["solidity_container_kind", "contract"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_mutability": "view",
+          "solidity_visibility": "external"
+        },
+        "description": "Solidity external/public function",
+        "kind": "api",
+        "node_id": "C:C.inspect",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_sol_override": {
+    "edges": [
+      ["C", "C:Base", "contains"],
+      ["C:Base", "C:Base.act", "contains"],
+      ["C", "C:Derived", "contains"],
+      ["C:Derived", "C:Base", "inherits"],
+      ["C:Derived", "C:Derived.act", "contains"]
+    ],
+    "files": {
+      "C.sol": "contract Base { function act(uint x) public virtual {} }\ncontract Derived is Base { function act(uint x) public override {} }\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["C", "C", "module", "C.sol", 1, 3, [], []],
+      ["C:Base", "Base", "contract", "C.sol", 1, 1, [], []],
+      [
+        "C:Base.act",
+        "act",
+        "method",
+        "C.sol",
+        1,
+        1,
+        [
+          ["solidity_visibility", "public"],
+          ["solidity_container_kind", "contract"]
+        ],
+        ["uint"]
+      ],
+      ["C:Derived", "Derived", "contract", "C.sol", 2, 2, [], []],
+      [
+        "C:Derived.act",
+        "act",
+        "method",
+        "C.sol",
+        2,
+        2,
+        [
+          ["solidity_visibility", "public"],
+          ["solidity_override", "true"],
+          ["solidity_container_kind", "contract"]
+        ],
+        ["uint"]
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_overridden_by": "C:Derived.act",
+          "solidity_visibility": "public"
+        },
+        "description": "Solidity external/public function",
+        "kind": "api",
+        "node_id": "C:Base.act",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_override": "true",
+          "solidity_visibility": "public"
+        },
+        "description": "Solidity external/public function",
+        "kind": "api",
+        "node_id": "C:Derived.act",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_sol_public": {
+    "edges": [
+      ["C", "C:C", "contains"],
+      ["C:C", "C:C.act", "contains"]
+    ],
+    "files": {
+      "C.sol": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\ncontract C {\n    function act() public {}\n}\n"
+    },
+    "language": "solidity",
+    "nodes": [
+      ["C", "C", "module", "C.sol", 1, 6, [], []],
+      ["C:C", "C", "contract", "C.sol", 3, 5, [], []],
+      [
+        "C:C.act",
+        "act",
+        "method",
+        "C.sol",
+        4,
+        4,
+        [
+          ["solidity_visibility", "public"],
+          ["solidity_container_kind", "contract"]
+        ],
+        []
+      ]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "attributes": {
+          "solidity_container_kind": "contract",
+          "solidity_visibility": "public"
+        },
+        "description": "Solidity external/public function",
+        "kind": "api",
+        "node_id": "C:C.act",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "tags_swift_main": {
+    "edges": [
+      ["app", "app:App", "contains"],
+      ["app:App", "app:App.main", "contains"]
+    ],
+    "files": {
+      "app.swift": "@main\nstruct App { static func main() {} }\n"
+    },
+    "language": "swift",
+    "nodes": [
+      ["app", "app", "module", "app.swift", 1, 3, [], []],
+      ["app:App", "App", "struct", "app.swift", 1, 2, [], []],
+      ["app:App.main", "main", "method", "app.swift", 2, 2, [], []]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Swift @main app entrypoint",
+        "kind": "user_input",
+        "node_id": "app:App.main",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "ts_nestjs": {
+    "edges": [
+      ["users\\.controller", "users\\.controller:UsersController", "contains"],
+      ["users\\.controller:UsersController", "users\\.controller:UsersController.findOne", "contains"]
+    ],
+    "files": {
+      "users.controller.ts": "import { Controller, Get } from '@nestjs/common';\n\n@Controller('users')\nexport class UsersController {\n  @Get(':id')\n  findOne(id: string) {\n    return { id };\n  }\n}\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["users\\.controller", "users\\.controller", "module", "users.controller.ts", 1, 10, [], []],
+      ["users\\.controller:UsersController", "UsersController", "class", "users.controller.ts", 4, 9, [], []],
+      ["users\\.controller:UsersController.findOne", "findOne", "method", "users.controller.ts", 6, 8, [], ["string"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "NestJS controller method",
+        "kind": "api",
+        "node_id": "users\\.controller:UsersController.findOne",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  },
+  "ts_nextjs_app_router": {
+    "edges": [
+      ["route", "route:GET", "contains"],
+      ["route", "route:POST", "contains"]
+    ],
+    "files": {
+      "route.ts": "export async function GET(request: Request) {\n  return new Response('ok');\n}\nexport async function POST(request: Request) {\n  return new Response('created');\n}\n"
+    },
+    "language": "typescript",
+    "nodes": [
+      ["route", "route", "module", "route.ts", 1, 7, [], []],
+      ["route:GET", "GET", "function", "route.ts", 1, 3, [], ["Request"]],
+      ["route:POST", "POST", "function", "route.ts", 4, 6, [], ["Request"]]
+    ],
+    "surface": [
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:GET",
+        "trust_level": "untrusted_external"
+      },
+      {
+        "asset_value": "high",
+        "description": "Next.js App Router handler",
+        "kind": "api",
+        "node_id": "route:POST",
+        "trust_level": "untrusted_external"
+      }
+    ]
+  }
+}
